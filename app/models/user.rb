@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   validates :email, uniqueness: true
   validates_format_of :email, with: /@/
   validates_presence_of :name, :surname, :grade, :section, :email, :password_digest
@@ -7,7 +8,7 @@ class User < ApplicationRecord
   def capitalize_all
     self.name = name.capitalize
     self.surname = surname.capitalize
-    self.section = surname.capitalize
+    self.section = section.capitalize
   end
 
 end
