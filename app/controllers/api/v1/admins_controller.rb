@@ -1,6 +1,6 @@
 module Api
   module V1
-    class AdminController < ApplicationController
+    class AdminsController < ApplicationController
       def create
         @admin = Admin.find_by_email(admin_params[:email])
         if @admin&.authenticate(admin_params[:password])
@@ -19,7 +19,7 @@ module Api
 
       private
       def admin_params
-        params.require(:admin).permit(:email, :password)
+        params.permit(:email, :password)
       end
 
     end
