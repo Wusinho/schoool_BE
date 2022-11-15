@@ -4,8 +4,6 @@ class CreateAdmins < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :surname, null: false
       t.integer :level, null: false
-      t.integer :ed_level, default: ''
-      t.string :section, default: ''
       t.string :email, null: false
       t.index :email, unique:true
       t.string :password_digest, null: false
