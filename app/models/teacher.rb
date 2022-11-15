@@ -11,7 +11,6 @@ class Teacher < ApplicationRecord
   def capitalize_all
     self.name = name.capitalize
     self.surname = surname.capitalize
-    self.section = section.capitalize
   end
 
 end
