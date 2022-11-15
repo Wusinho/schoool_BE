@@ -3,13 +3,19 @@ module Api
     class RegistrationsController < ApplicationController
       def create
         @user = User.new(user_params)
-
-        if @user
-          render json: @user, status: :created
+        if @user.save
+          render json:
+                   {
+                     user: @user,
+                     status: :created
+                   }
         else
-          render json: @user.errors, status: :unprocessable_entity
+          render json:
+                   {
+                     user: @user.errors,
+                     status: :unprocessable_entity
+                   }
         end
-
       end
 
       def show
@@ -18,7 +24,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit( :name, :surname, :grade, :section, :email, :password)
+        params.permit( :name, :surname, :grade, :section, :email, :password, :password_confirmation)
       end
     end
   end

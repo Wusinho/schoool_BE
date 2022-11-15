@@ -47,3 +47,4 @@ group :development do
 end
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
+gem 'rack-cors', '~> 1.1', '>= 1.1.1'
