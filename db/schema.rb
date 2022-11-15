@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_221424) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,10 +26,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_221424) do
   create_table "classrooms", force: :cascade do |t|
     t.bigint "edlevel_id", null: false
     t.bigint "section_id", null: false
+    t.integer "participants", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["edlevel_id"], name: "index_classrooms_on_edlevel_id"
     t.index ["section_id"], name: "index_classrooms_on_section_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "edlevels", force: :cascade do |t|
@@ -53,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_221424) do
     t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_students_on_classroom_id"
     t.index ["email"], name: "index_students_on_email", unique: true
   end
 
@@ -67,11 +76,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_221424) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "participants", null: false
     t.string "times_week", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "classroom_id"
+    t.bigint "course_id"
+    t.index ["classroom_id"], name: "index_subjects_on_classroom_id"
+    t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -86,5 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_221424) do
 
   add_foreign_key "classrooms", "edlevels"
   add_foreign_key "classrooms", "sections"
+  add_foreign_key "students", "classrooms"
   add_foreign_key "subjectdates", "subjects"
+  add_foreign_key "subjects", "classrooms"
+  add_foreign_key "subjects", "courses"
 end
