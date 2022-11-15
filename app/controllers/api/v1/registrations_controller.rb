@@ -2,29 +2,29 @@ module Api
   module V1
     class RegistrationsController < ApplicationController
       def create
-        @user = User.new(user_params)
-        if @user.save
+        @student = Student.new(student_params)
+        if @student.save
           render json:
                    {
-                     token: JsonWebToken.encode(user_id: @user.id),
-                     name: @user.name,
+                     token: JsonWebToken.encode(student_id: @student.id),
+                     name: @student.name,
                      status: :created
                    }
         else
           render json:
                    {
-                     user: @user.errors,
+                     student: @student.errors,
                      status: :unprocessable_entity
                    }
         end
       end
 
       def show
-        user = User.find(params[:id])
+        student = Student.find(params[:id])
       end
       private
 
-      def user_params
+      def student_params
         params.require(:registration).permit( :name, :surname, :grade, :section, :email, :password, :password_confirmation)
       end
     end

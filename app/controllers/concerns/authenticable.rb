@@ -1,11 +1,11 @@
 module Authenticable
-  def current_user
-    return @current_user if @current_user
+  def current_student
+    return @current_student if @current_student
 
     header = request.headers['Authorization']
     return if header.blank?
 
     decoded = JsonWebToken.decode(header)
-    @current_user = User.find(decoded[:user_id])
+    @current_student = Student.find(decoded[:student_id])
   end
 end

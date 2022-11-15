@@ -23,7 +23,7 @@ end
   first_name = Faker::Name.first_name
   last_name = Faker::Name.middle_name
   email = "student_#{i}@gmail.com"
-  User.create(
+  Student.create(
     name: first_name,
     surname: last_name,
     email: email,

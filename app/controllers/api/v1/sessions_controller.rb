@@ -3,11 +3,11 @@ module Api
     class SessionsController < ApplicationController
 
       def create
-        @user = User.find_by_email(user_params[:email])
-        if @user&.authenticate(user_params[:password])
+        @student = Student.find_by_email(student_params[:email])
+        if @student&.authenticate(student_params[:password])
           render json: {
-            token: JsonWebToken.encode(user_id: @user.id),
-            name: @user.name,
+            token: JsonWebToken.encode(student_id: @student.id),
+            name: @student.name,
             status: :created
           }
         else
@@ -20,7 +20,7 @@ module Api
 
       private
 
-      def user_params
+      def student_params
         params.require(:session).permit(:email, :password)
       end
 
