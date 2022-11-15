@@ -1,2 +1,2 @@
-class EdLevel < ApplicationRecord
+class Edlevel < ApplicationRecord
 end
