@@ -6,7 +6,8 @@ module Api
         if @user.save
           render json:
                    {
-                     user: @user,
+                     token: JsonWebToken.encode(user_id: @user.id),
+                     name: @user.name,
                      status: :created
                    }
         else
