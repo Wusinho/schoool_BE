@@ -5,8 +5,9 @@ class JsonWebToken
   end
 
   def self.decode(token)
-    decoded = JWT.decode(token, SECRET_KEY).first
-    HashWithIndifferentAccess.new(decoded)
+    decoded = JWT.decode(token, SECRET_KEY)
+    debugger
+    # HashWithIndifferentAccess.new(decoded)
   end
 
   private
