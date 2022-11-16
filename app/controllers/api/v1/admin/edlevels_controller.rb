@@ -1,5 +1,5 @@
     class Api::V1::Admin::EdlevelsController < ApplicationController
-      before_action :current_admin, only: [:create]
+      before_action :authenticate_admin!, only: [:create]
 
       def index
         @edlevels = Edlevel.all
@@ -17,7 +17,7 @@
       private
 
       def edlevel_params
-        params.permit(:name, :nivel)
+        params.permit(:ed_level, :nivel)
       end
 
     end

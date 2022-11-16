@@ -21,7 +21,7 @@ RSpec.describe "Api::V1::Admin::Courses", type: :request do
       req_params = { name: '' }
 
       post '/api/v1/admin/courses', params: req_params,
-           headers: { 'Authorizatio' => token }
+           headers: { 'Authorization' => token }
 
       payload = JSON.parse(response.body)
       expect(payload['error']).to eql({"name"=>["can't be blank"]})
