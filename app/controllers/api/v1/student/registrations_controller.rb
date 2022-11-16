@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class RegistrationsController < ApplicationController
+    class Api::V1::Student::RegistrationsController < ApplicationController
       def create
         @student = Student.new(student_params)
         if @student.save
@@ -29,5 +27,3 @@ module Api
         params.permit(:name, :surname, :grade, :section, :email, :password, :password_confirmation, :classroom_id)
       end
     end
-  end
-end

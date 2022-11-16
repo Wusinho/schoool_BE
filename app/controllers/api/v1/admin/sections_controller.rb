@@ -1,14 +1,7 @@
-module Api
-  module V1
-    class SectionsController < ApplicationController
+    class Api::V1::Admin::SectionsController < ApplicationController
 
       def index
         @sections = Section.all
       end
-
-
     end
-
-  end
-end
 

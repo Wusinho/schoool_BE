@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class TimetablesController < ApplicationController
+    class Api::V1::Admin::TimetablesController < ApplicationController
       before_action :current_admin, only: [:create]
 
       def create
@@ -19,7 +17,4 @@ module Api
       end
 
     end
-
-  end
-end
 

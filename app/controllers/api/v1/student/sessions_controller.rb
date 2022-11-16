@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class SessionsController < ApplicationController
+    class Api::V1::Student::SessionsController < ApplicationController
 
       def create
         @student = Student.find_by_email(student_params[:email])
@@ -25,5 +23,3 @@ module Api
       end
 
     end
-  end
-end

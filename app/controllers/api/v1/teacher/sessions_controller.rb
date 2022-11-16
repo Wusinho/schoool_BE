@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class TeachersController < ApplicationController
+    class Api::V1::Teacher::SessionsController < ApplicationController
       def create
         @teacher = Teacher.find_by_email(teacher_params[:email])
         if @teacher&.authenticate(teacher_params[:password])
@@ -23,7 +21,3 @@ module Api
       end
 
     end
-
-  end
-end
-

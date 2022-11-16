@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class EdlevelsController < ApplicationController
+    class Api::V1::Admin::EdlevelsController < ApplicationController
       before_action :current_admin, only: [:create]
 
       def index
@@ -23,7 +21,4 @@ module Api
       end
 
     end
-
-  end
-end
 

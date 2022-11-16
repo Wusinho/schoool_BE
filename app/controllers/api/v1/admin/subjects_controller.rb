@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class SubjectsController < ApplicationController
+    class Api::V1::Admin::SubjectsController < ApplicationController
       before_action :current_admin, only: [:create]
 
       def create
@@ -21,5 +19,3 @@ module Api
       end
 
     end
-  end
-end
