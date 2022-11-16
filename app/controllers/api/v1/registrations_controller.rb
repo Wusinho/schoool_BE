@@ -10,10 +10,11 @@ module Api
                      name: @student.name,
                      status: :created
                    }
+
         else
           render json:
                    {
-                     student: @student.errors,
+                     error: @student.errors,
                      status: :unprocessable_entity
                    }
         end
@@ -25,7 +26,7 @@ module Api
       private
 
       def student_params
-        params.require(:registration).permit( :name, :surname, :grade, :section, :email, :password, :password_confirmation)
+        params.require(:registration).permit(:name, :surname, :grade, :section, :email, :password, :password_confirmation, :classroom_id)
       end
     end
   end
