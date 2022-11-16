@@ -16,7 +16,7 @@ sections = [sA,sB,sC,sD,sE]
   first_name = Faker::Name.first_name
   last_name = Faker::Name.middle_name
   email = "teacher_#{i}@gmail.com"
-  Teacher.create(name: first_name, surname: last_name, email: email,  edlevel_id: grado.id, section_id: sections[i].id, password: password, password_confirmation: password)
+  Teacher.create(name: first_name, surname: last_name, email: email, password: password, password_confirmation: password)
 end
 
 10.times do |i|
@@ -30,7 +30,5 @@ end
     password: password,
     password_confirmation: password,
     active: true,
-    edlevel_id: grado.id,
-    section_id: sA.id,
   )
 end
