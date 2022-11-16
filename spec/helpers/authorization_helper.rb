@@ -3,8 +3,7 @@ require 'faker'
 # authorization helper
 module AuthorizationHelper
   def correct_student_params
-    {
-      registration:{
+      {
         name: Faker::Name.first_name,
         surname: Faker::Name.last_name,
         email: Faker::Internet.email,
@@ -12,7 +11,6 @@ module AuthorizationHelper
         password_confirmation: '123456',
         classroom_id: classroom.id
       }
-    }
   end
 
   def missing_student_surname
