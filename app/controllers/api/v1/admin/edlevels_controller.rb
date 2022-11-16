@@ -18,8 +18,8 @@
       private
 
       def sanitize_params
-        params[:ed_level] = params[:ed_level].to_i
-        params[:nivel]  = params[:nivel].to_i
+        params[:ed_level] = params[:ed_level].to_i if params[:ed_level]
+        params[:nivel]  = params[:nivel].to_i if params[:nivel]
       end
 
       def edlevel_params

@@ -20,6 +20,21 @@ RSpec.describe "Api::V1::Admin::Edlevels", type: :request do
       expect(response).to have_http_status(:created)
     end
 
+    it 'should not create a edlevel if a strong params is empty' do
+      token = JsonWebToken.encode(admin_email: admin.email)
+      req_params = {
+        ed_level: '',
+        nivel: 0,
+      }
+
+      post '/api/v1/admin/edlevels', params: req_params,
+           headers: { 'Authorization' => token }
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
 
   end
+
+
 end
