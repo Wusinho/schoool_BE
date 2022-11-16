@@ -7,20 +7,17 @@ RSpec.describe "Api::V1::Admin::Edlevels", type: :request do
 
   describe "POST /api/v1/admin/edlevels" do
 
-
-    let 'should create a edlevel' do
+    it 'should create a edlevels' do
       token = JsonWebToken.encode(admin_email: admin.email)
       req_params = {
-        nivel: 1,
         ed_level: 5,
+        nivel: 0,
       }
 
       post '/api/v1/admin/edlevels', params: req_params,
            headers: { 'Authorization' => token }
 
-      payload = JSON.parse(response.body)
-
-      expect(payload).to eql(:forbidden)
+      expect(response).to have_http_status(:created)
     end
 
 
