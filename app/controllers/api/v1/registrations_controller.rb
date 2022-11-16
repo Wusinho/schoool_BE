@@ -26,7 +26,7 @@ module Api
       private
 
       def student_params
-        params.require(:registration).permit(:name, :surname, :grade, :section, :email, :password, :password_confirmation, :classroom_id)
+        params.permit(:name, :surname, :grade, :section, :email, :password, :password_confirmation, :classroom_id)
       end
     end
   end

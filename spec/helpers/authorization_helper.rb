@@ -26,6 +26,17 @@ module AuthorizationHelper
     }
   end
 
+  def duplicated_student_email
+    {
+      name: Faker::Name.first_name,
+      surname: Faker::Name.last_name,
+      email: 'student_1@gmail.com',
+      password: '123456',
+      password_confirmation: '123456',
+      classroom_id: classroom.id
+    }
+  end
+
   def register_user(user)
     post '/api/v1/registrations', params: user
   end
