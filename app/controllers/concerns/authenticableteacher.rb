@@ -7,5 +7,7 @@ module Authenticableteacher
 
     decoded = JsonWebToken.decode(header)
     @current_teacher = Teacher.find(decoded[:teacher_id])
+  rescue StandardError => e
+    e.message
   end
 end
