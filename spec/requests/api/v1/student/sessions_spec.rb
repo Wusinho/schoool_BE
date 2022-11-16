@@ -15,7 +15,7 @@ RSpec.describe "Api::V1::Student::Sessions", type: :request do
       post "/api/v1/student/sessions", params: req_payload
       payload = JSON.parse(response.body)
 
-      expect(payload['name']).to_not be_empty
+      expect(payload['name']).to eql(student.name)
       expect(response).to have_http_status(:ok)
     end
 
