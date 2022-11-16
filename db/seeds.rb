@@ -19,6 +19,8 @@ sections = [sA,sB,sC,sD,sE]
   Teacher.create(name: first_name, surname: last_name, email: email, password: password, password_confirmation: password)
 end
 
+class_room = Classroom.create(edlevel_id: grado.id, section_id: sA.id, participants: 10)
+
 10.times do |i|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.middle_name
@@ -30,5 +32,6 @@ end
     password: password,
     password_confirmation: password,
     active: true,
+    classroom_id: class_room.id
   )
 end
