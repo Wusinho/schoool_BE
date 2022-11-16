@@ -1,7 +1,7 @@
 module Api
   module V1
     class CoursesController < ApplicationController
-      before_action :authenticate_admin, only: [:create]
+      before_action :current_admin, only: [:create]
 
       def index
         @courses = Course.all
