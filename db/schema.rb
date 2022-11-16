@@ -70,8 +70,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.integer "week_day", default: 0
     t.time "starts_at", null: false
     t.time "ends_at", null: false
+    t.bigint "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_subjectdates_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -101,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   add_foreign_key "classrooms", "edlevels"
   add_foreign_key "classrooms", "sections"
   add_foreign_key "students", "classrooms"
+  add_foreign_key "subjectdates", "subjects"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "courses"
   add_foreign_key "subjects", "subjectdates"
