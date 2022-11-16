@@ -12,6 +12,7 @@ RSpec.describe "Api::v1::Registrations", type: :request do
 
       post "/api/v1/registrations", params: req_payload
       payload = JSON.parse(response.body)
+
       expect(payload['name']).to_not be_empty
       expect(response).to have_http_status(:ok)
     end
@@ -21,8 +22,9 @@ RSpec.describe "Api::v1::Registrations", type: :request do
 
       post "/api/v1/registrations", params: req_payload
       payload = JSON.parse(response.body)
-      expect(payload).to_not be_empty
       resp = JSON.parse(response.body)
+
+      expect(payload).to_not be_empty
       expect(payload['error']).to eql({"surname"=>["can't be blank"]})
       expect(resp['status']).to eql('unprocessable_entity')
     end
