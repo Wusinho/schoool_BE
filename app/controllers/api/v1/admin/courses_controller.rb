@@ -1,5 +1,5 @@
     class Api::V1::Admin::CoursesController < ApplicationController
-      before_action :current_admin, only: [:create]
+      before_action :authenticate_admin, only: [:create]
 
       def index
         @courses = Course.all
@@ -10,7 +10,11 @@
         if @course.save
           render status: :created
         else
-          render status: :unprocessable_entity
+          render json:
+                   {
+                     error: @course.errors,
+                     status: :unprocessable_entity
+                   }
         end
       end
 
