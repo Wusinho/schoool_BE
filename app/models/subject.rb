@@ -3,5 +3,4 @@ class Subject < ApplicationRecord
   belongs_to :teacher
   belongs_to :course
   belongs_to :classroom
-  accepts_nested_attributes_for :subjectdates
 end

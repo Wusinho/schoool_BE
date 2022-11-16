@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_033407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,13 +67,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   end
 
   create_table "subjectdates", force: :cascade do |t|
-    t.integer "week_day", default: 0
-    t.time "starts_at", null: false
-    t.time "ends_at", null: false
     t.bigint "subject_id", null: false
+    t.bigint "timetable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_subjectdates_on_subject_id"
+    t.index ["timetable_id"], name: "index_subjectdates_on_timetable_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -83,10 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.bigint "classroom_id"
     t.bigint "course_id"
     t.bigint "teacher_id"
-    t.bigint "subjectdate_id"
     t.index ["classroom_id"], name: "index_subjects_on_classroom_id"
     t.index ["course_id"], name: "index_subjects_on_course_id"
-    t.index ["subjectdate_id"], name: "index_subjects_on_subjectdate_id"
     t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
   end
 
@@ -100,12 +97,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.index ["email"], name: "index_teachers_on_email", unique: true
   end
 
+  create_table "timetables", force: :cascade do |t|
+    t.integer "week_day", default: 0
+    t.time "starts_at", null: false
+    t.time "ends_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "classrooms", "edlevels"
   add_foreign_key "classrooms", "sections"
   add_foreign_key "students", "classrooms"
   add_foreign_key "subjectdates", "subjects"
+  add_foreign_key "subjectdates", "timetables"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "courses"
-  add_foreign_key "subjects", "subjectdates"
   add_foreign_key "subjects", "teachers"
 end
