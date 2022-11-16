@@ -4,12 +4,12 @@ first_name = Faker::Name.first_name
 last_name = Faker::Name.middle_name
 password = '123456'
 Admin.create(name: first_name, surname: last_name, email: 'admin@gmail.com', password: password, password_confirmation: password)
-grado = Edlevel.create(ed_level: 5, nivel: 'Secundaria')
-sA = Section.create(section: 'A')
-sB = Section.create(section: 'B')
-sC = Section.create(section: 'C')
-sD = Section.create(section: 'D')
-sE = Section.create(section: 'E')
+grado = Edlevel.create(ed_level: 5, nivel: 1)
+sA = Section.create(section: 0)
+sB = Section.create(section: 1)
+sC = Section.create(section: 2)
+sD = Section.create(section: 3)
+sE = Section.create(section: 4)
 sections = [sA,sB,sC,sD,sE]
 
 5.times do |i|
