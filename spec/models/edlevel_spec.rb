@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Edlevel, type: :model do
-  describe 'Validations' do
-    it { should validate_presence_of(:section) }
+  describe Edlevel do
+    context 'validations' do
+      it do
+        should validate_presence_of(:nivel)
+      end
+    end
   end
 end

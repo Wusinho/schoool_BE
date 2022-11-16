@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe Student do
+    it do
+      should belong_to(:classroom)
+      should validate_presence_of(:name)
+      should validate_presence_of(:email)
+      should validate_presence_of(:surname)
+      should validate_presence_of(:email)
+      should validate_presence_of(:password_digest)
+    end
+  end
 end

@@ -1,7 +1,6 @@
 class Student < ApplicationRecord
   has_secure_password
-  belongs_to :edlevel
-  belongs_to :section
+  belongs_to :classroom
   validates :email, uniqueness: true
   validates_format_of :email, with: /@/
   validates_presence_of :name, :surname, :email, :password_digest
