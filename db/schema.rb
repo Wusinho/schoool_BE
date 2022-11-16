@@ -42,13 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
 
   create_table "edlevels", force: :cascade do |t|
     t.integer "ed_level", null: false
-    t.string "nivel", null: false
+    t.integer "nivel", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "section"
+    t.integer "section", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
