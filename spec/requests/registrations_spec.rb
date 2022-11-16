@@ -5,10 +5,9 @@ RSpec.describe "Api::v1::Registrations", type: :request do
   include AuthorizationHelper
 
   describe "POST /api/v1/registrations" do
+    let(:classroom) { create(:classroom) }
 
       describe 'with all the correct params' do
-        let(:classroom) { create(:classroom) }
-
         it 'should create a post' do
           req_payload = correct_student_params
 
@@ -21,8 +20,6 @@ RSpec.describe "Api::v1::Registrations", type: :request do
       end
 
       describe 'with a missing strong param' do
-        let(:classroom) { create(:classroom) }
-
         it 'should not create a student when a required params is not sent' do
           req_payload = missing_student_surname
 
@@ -36,7 +33,6 @@ RSpec.describe "Api::v1::Registrations", type: :request do
       end
 
       describe 'with a duplicated email in DB' do
-        let(:classroom) { create(:classroom) }
         let!(:student) { create(:student)}
 
         it 'should not create student' do
