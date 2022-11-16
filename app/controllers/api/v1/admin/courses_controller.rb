@@ -1,5 +1,5 @@
     class Api::V1::Admin::CoursesController < ApplicationController
-      before_action :authenticate_admin, only: [:create]
+      before_action :authenticate_admin!, only: [:create]
 
       def index
         @courses = Course.all

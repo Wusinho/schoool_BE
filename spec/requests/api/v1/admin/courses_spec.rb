@@ -1,9 +1,8 @@
 require 'rails_helper'
-require 'helpers/mock_admin_session'
 
 RSpec.describe "Api::V1::Admin::Courses", type: :request do
-  include MockAdminSession
   let!(:admin) { create(:admin) }
+  let!(:student) { create(:student) }
 
   describe "POST /api/v1/admin/courses" do
     it 'should create a post' do
@@ -19,5 +18,20 @@ RSpec.describe "Api::V1::Admin::Courses", type: :request do
       expect(response).to have_http_status(:created)
 
     end
+
+    it 'should not create a post if somebody besides an admin tries to' do
+      token = JsonWebToken.encode(admin_email: student.email)
+      req_params = {
+        name: 'Matematicas'
+      }
+
+      post '/api/v1/admin/courses', params: req_params, headers: {
+        'Authorization' => token
+      }
+
+      expect(response).to have_http_status(:forbidden)
+
+    end
+
   end
 end

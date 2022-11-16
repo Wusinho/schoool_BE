@@ -3,7 +3,7 @@
         @admin = Admin.find_by_email(admin_params[:email])
         if @admin&.authenticate(admin_params[:password])
           render json: {
-            token: JsonWebToken.encode(admin_id: @admin.id),
+            token: JsonWebToken.encode(admin_email: @admin.email),
             name: @admin.name,
             status: :created
           }
