@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Student, type: :model do
-  describe Student do
+RSpec.describe Teacher, type: :model do
+  describe Teacher do
     context 'validations' do
       it do
-        should belong_to(:classroom)
+        should have_many(:subject)
         should validate_presence_of(:name)
         should validate_presence_of(:surname)
         should validate_presence_of(:email)
