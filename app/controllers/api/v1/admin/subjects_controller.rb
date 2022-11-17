@@ -1,5 +1,5 @@
     class Api::V1::Admin::SubjectsController < ApplicationController
-      before_action :current_admin, only: [:create]
+      before_action :authenticate_admin!, only: [:create]
 
       def create
         @subject = Subject.new(subject_params)
