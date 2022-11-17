@@ -72,8 +72,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.datetime "updated_at", null: false
     t.bigint "classroom_id"
     t.bigint "course_id"
+    t.bigint "teacher_id"
     t.index ["classroom_id"], name: "index_subjects_on_classroom_id"
     t.index ["course_id"], name: "index_subjects_on_course_id"
+    t.index ["teacher_id"], name: "index_subjects_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -101,5 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   add_foreign_key "students", "classrooms"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "courses"
+  add_foreign_key "subjects", "teachers"
   add_foreign_key "timetables", "subjects"
 end

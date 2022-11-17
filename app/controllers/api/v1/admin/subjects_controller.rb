@@ -13,9 +13,7 @@
       private
 
       def subject_params
-        params.require(:subject).permit(:name, :participants, :times_week,
-                                        subjectdate_attributes: [:timetable_id]
-                                        )
+        params.permit(:name, :times_week, :classroom_id, :course_id, :teacher_id)
       end
 
     end
