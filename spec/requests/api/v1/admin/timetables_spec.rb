@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Admin::Timetables", type: :request do
   let!(:admin) { create(:admin) }
-  let!(:now) { Time.now}
+  let!(:now) { [7,8,9].sample }
 
   describe "POST /api/v1/admin/timetables" do
       it 'should create a subject' do
@@ -11,7 +11,7 @@ RSpec.describe "Api::V1::Admin::Timetables", type: :request do
       req_params = {
         week_day: 1,
         starts_at: now,
-        ends_at: now + 2.hours
+        ends_at: now + 2
       }
 
       post '/api/v1/admin/timetables', params: req_params,
@@ -27,7 +27,7 @@ RSpec.describe "Api::V1::Admin::Timetables", type: :request do
         req_params = {
           week_day: '',
           starts_at: now,
-          ends_at: now + 2.hours
+          ends_at: now + 2
         }
 
         post '/api/v1/admin/timetables', params: req_params,

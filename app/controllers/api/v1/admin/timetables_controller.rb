@@ -15,6 +15,9 @@
 
       def sanitize_week_day
         params[:week_day] = params[:week_day].to_i unless params[:week_day].blank?
+        params[:starts_at] = params[:starts_at].to_i unless params[:starts_at].blank?
+        params[:ends_at] = params[:ends_at].to_i unless params[:ends_at].blank?
+
       end
 
       def timetable_params
