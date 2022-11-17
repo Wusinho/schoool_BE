@@ -1,5 +1,5 @@
     class Api::V1::Admin::ClassroomsController < ApplicationController
-      before_action :current_admin, only: [:create]
+      before_action :authenticate_admin!, only: [:create]
 
       def create
         @classroom = Classroom.new(classroom_params)
