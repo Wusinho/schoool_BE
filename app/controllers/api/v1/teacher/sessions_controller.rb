@@ -5,6 +5,7 @@
           render json: {
             token: JsonWebToken.encode(teacher_id: @teacher.id),
             name: @teacher.name,
+            user_type: Teacher.to_s,
             status: :created
           }
         else

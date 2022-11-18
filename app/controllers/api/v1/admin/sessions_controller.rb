@@ -5,6 +5,7 @@
           render json: {
             token: JsonWebToken.encode(admin_email: @admin.email),
             name: @admin.name,
+            user_type: Admin.to_s,
             status: :created
           }
         else

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         resources :sections, only: [:create]
         resources :subjects, only: [:create]
         resources :timetables, only: [:create]
+        resources :dashboards
       end
     end
   end
