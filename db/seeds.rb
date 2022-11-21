@@ -10,8 +10,9 @@ quinto_B= GradeLevel.create(grade_level: 1, grade: 5, section: 1)
 c5a = Classroom.create(grade_level_id: quinto_A.id, participants: 10)
 c5b = Classroom.create(grade_level_id: quinto_B.id, participants: 10)
 
-5.times do
-  Course.create(name: Faker::Educator.subject)
+cursos = ['Matematicas', 'Biologia', 'Lenguaje', 'Aritmetica', 'Quimica']
+cursos.each do | name|
+  Course.create(name: name)
 end
 
 5.times do |i|

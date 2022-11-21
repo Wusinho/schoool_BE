@@ -6,6 +6,8 @@ class Student < ApplicationRecord
   validates_presence_of :name, :surname, :email, :password_digest
   before_save :capitalize_all
 
+  has_many :students_grade, through: :classroom, source: :grade_level
+
   def capitalize_all
     self.name = name.capitalize
     self.surname = surname.capitalize
