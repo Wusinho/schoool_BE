@@ -1,5 +1,5 @@
 class Classroom < ApplicationRecord
-  belongs_to :edlevel
+  belongs_to :student_level
   belongs_to :section
   has_many :subjects
   has_many :cursos, through: :subjects, source: :course

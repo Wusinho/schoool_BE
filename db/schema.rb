@@ -25,13 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   end
 
   create_table "classrooms", force: :cascade do |t|
-    t.bigint "edlevel_id", null: false
-    t.bigint "section_id", null: false
+    t.bigint "student_level_id", null: false
     t.integer "participants", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["edlevel_id"], name: "index_classrooms_on_edlevel_id"
-    t.index ["section_id"], name: "index_classrooms_on_section_id"
+    t.index ["student_level_id"], name: "index_classrooms_on_student_level_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -40,15 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "edlevels", force: :cascade do |t|
-    t.integer "ed_level", null: false
-    t.integer "nivel", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.integer "section", default: 0, null: false
+  create_table "student_levels", force: :cascade do |t|
+    t.integer "grade_level", null: false
+    t.integer "grade", null: false
+    t.integer "section", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,8 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.index ["subject_id"], name: "index_timetables_on_subject_id"
   end
 
-  add_foreign_key "classrooms", "edlevels"
-  add_foreign_key "classrooms", "sections"
+  add_foreign_key "classrooms", "student_levels"
   add_foreign_key "students", "classrooms"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "courses"
