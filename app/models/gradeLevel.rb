@@ -1,4 +1,4 @@
-class StudentLevel < ApplicationRecord
+class GradeLevel < ApplicationRecord
   enum :grade_level, [ :primaria, :secundaria ]
   enum :section, [:A, :B, :C, :D, :E]
 

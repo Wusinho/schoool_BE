@@ -25,11 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   end
 
   create_table "classrooms", force: :cascade do |t|
-    t.bigint "student_level_id", null: false
+    t.bigint "grade_level_id", null: false
     t.integer "participants", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["student_level_id"], name: "index_classrooms_on_student_level_id"
+    t.index ["grade_level_id"], name: "index_classrooms_on_grade_level_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "student_levels", force: :cascade do |t|
+  create_table "grade_levels", force: :cascade do |t|
     t.integer "grade_level", null: false
     t.integer "grade", null: false
     t.integer "section", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.index ["subject_id"], name: "index_timetables_on_subject_id"
   end
 
-  add_foreign_key "classrooms", "student_levels"
+  add_foreign_key "classrooms", "grade_levels"
   add_foreign_key "students", "classrooms"
   add_foreign_key "subjects", "classrooms"
   add_foreign_key "subjects", "courses"
