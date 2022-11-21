@@ -1,5 +1,5 @@
 class Classroom < ApplicationRecord
-  belongs_to :student_level
+  belongs_to :grade_level
   has_many :subjects
   has_many :cursos, through: :subjects, source: :course
   validates_presence_of :participants

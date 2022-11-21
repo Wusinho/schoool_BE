@@ -6,6 +6,7 @@ class CreateTeachers < ActiveRecord::Migration[7.0]
       t.string :email, null: false
       t.index :email, unique:true
       t.string :password_digest, null: false
+      t.boolean :active, default: false
 
       t.timestamps
     end

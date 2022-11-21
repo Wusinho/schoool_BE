@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
     t.string "surname", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_teachers_on_email", unique: true
