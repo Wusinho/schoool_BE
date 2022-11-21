@@ -5,8 +5,7 @@ module EmailValidation
   included do
     has_secure_password
 
-    validates :email, uniqueness: true
-    validates_format_of :email, with: /@/
+    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
     validates_presence_of :name, :surname, :email, :password_digest
     before_save :capitalize_all
 
