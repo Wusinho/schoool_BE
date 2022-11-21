@@ -13,4 +13,8 @@ class Student < ApplicationRecord
     self.surname = surname.capitalize
   end
 
+  def students_courses
+    self.classroom.classroom_courses
+  end
+
 end

@@ -10,7 +10,7 @@ quinto_B= GradeLevel.create(grade_level: 1, grade: 5, section: 1)
 c5a = Classroom.create(grade_level_id: quinto_A.id, participants: 10)
 c5b = Classroom.create(grade_level_id: quinto_B.id, participants: 10)
 
-cursos = ['Matematicas', 'Biologia', 'Lenguaje', 'Aritmetica', 'Quimica']
+cursos = ['Matematicas', 'Biologia', 'Lenguaje', 'Aritmetica', 'Quimica', 'Ingles', 'Geografia', 'Fisica']
 cursos.each do | name|
   Course.create(name: name)
 end
@@ -26,14 +26,14 @@ classrooms = Classroom.all
 courses = Course.all
 
 classrooms.each_with_index do|classroom, index|
-  courses.each do |course|
+  courses.sample(4).each do |course|
     times = [1,2].sample
     teacher = Teacher.all.sample
     sub = Subject.create(times_week: times, classroom_id: classroom.id, course_id: course.id, teacher_id: teacher.id)
-    sub.times_week.to_i.times do
-      day = [0,1,2,3,4].sample
+    day = [0,1,2,3].sample
+    sub.times_week.to_i.times do|i|
       starts = [8,9,10,11,12,13,14,15].sample
-      Timetable.create(week_day: day, starts_at: starts, ends_at:starts + 2, subject_id: sub.id)
+      Timetable.create(week_day: day + i, starts_at: starts, ends_at:starts + 2, subject_id: sub.id)
     end
   end
 
