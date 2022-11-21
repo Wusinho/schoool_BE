@@ -33,9 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_224126) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_courses_on_name", unique: true
   end
 
   create_table "grade_levels", force: :cascade do |t|
